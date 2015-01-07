@@ -90,6 +90,18 @@
                 <facets_max_size>50</facets_max_size>
                 <enable_icu_folding>0</enable_icu_folding>
             </general>
+            <cron>
+                <is_active>0</is_active>
+                <schedule><![CDATA[0 7 * * *]]></schedule>
+            </cron>
         </elasticgento>
     </default>
+    <crontab>
+        <jobs>
+            <elasticgento_full_reindex>
+                <schedule><config_path>elasticgento/cron/schedule</config_path></schedule>
+                <run><model>elasticgento/observer::fullReindex</model></run>
+            </elasticgento_full_reindex>
+        </jobs>
+    </crontab>
 </config>
