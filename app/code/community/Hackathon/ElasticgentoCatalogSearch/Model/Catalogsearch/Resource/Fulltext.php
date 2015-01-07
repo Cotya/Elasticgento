@@ -97,6 +97,15 @@ class Hackathon_ElasticgentoCatalogSearch_Model_Catalogsearch_Resource_Fulltext
             $queryFuzzyLikeThis->addFields(
                 [$fieldname]
             );
+            if($fieldname=='manufacturer_value'){
+                $queryFuzzyLikeThis->setBoost(100);
+            }
+            if(
+                $fieldname=='name'
+                || $fieldname=='tags'
+            ){
+                $queryFuzzyLikeThis->setBoost(50);
+            }
             $queryFuzzyLikeThis->setLikeText($queryText);
             $boolQuery->addShould($queryFuzzyLikeThis);
         }

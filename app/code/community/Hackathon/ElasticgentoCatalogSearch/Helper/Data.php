@@ -88,6 +88,7 @@ class Hackathon_ElasticgentoCatalogSearch_Helper_Data extends Mage_Core_Helper_A
         $result = array();
         $result[] = 'name';
         $result[] = 'sku';
+        $result[] = 'tags';
         $searchableAttributes = $this->getSearchableProductAttributes();
         
         foreach($searchableAttributes as $attribute){

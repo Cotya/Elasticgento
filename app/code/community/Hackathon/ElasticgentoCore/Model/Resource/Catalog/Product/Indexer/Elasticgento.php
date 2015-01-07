@@ -409,6 +409,36 @@ class Hackathon_ElasticgentoCore_Model_Resource_Catalog_Product_Indexer_Elasticg
         return $documents;
     }
 
+    private function _addTagData($storeId, $documents)
+    {
+        $adapter = $this->_getReadAdapter();
+        $tagTable           = $this->getTable('tag/tag');
+        $tagRelationTable   = $this->getTable('tag/relation');
+        $select = $adapter->select()
+            ->from($tagRelationTable,
+                array(
+                    'tag_id',
+                    'product_id'   => 'product_id',
+                    'store_id'   => 'store_id'
+                )
+            )
+            ->join(array('tag' => $tagTable),
+                'tag_relation.tag_id = tag.tag_id',
+                array(
+                    'name' => new \Zend_Db_Expr('group_concat(`tag`.name SEPARATOR " , ")'),
+                )
+            )
+            ->group(['product_id'])
+        ;
+        
+        foreach($adapter->fetchAll($select) as $tag){
+            $documents[$tag['product_id']]->set('tags', $tag['name']);
+        }
+        
+        
+        return $documents;
+    }
+
     /**
      * add product price data to documents
      *
@@ -633,6 +663,7 @@ class Hackathon_ElasticgentoCore_Model_Resource_Catalog_Product_Indexer_Elasticg
             }
             $documents = $this->_addPriceData($storeId, $documents);
             $documents = $this->_addCategoryData($storeId, $documents);
+            $documents = $this->_addTagData($storeId, $documents);
             $documents = $this->_addSuperLinkData($documents);
             $documents = $this->_addLinkData($documents);
 
