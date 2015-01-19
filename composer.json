@@ -1,0 +1,17 @@
+{
+    "name": "cotya/elasticgento",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "Daniel Niedergesäß",
+            "email": "daniel.niedergesaess@gmail.com"
+        },
+        {
+            "name": "Flyingmana",
+            "email": "flyingmana@googlemail.com"
+        }
+    ],
+    "require": {
+        "ruflin/elastica": "~1.3"
+    }
+}
