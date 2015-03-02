@@ -8,7 +8,7 @@
 
 
 $magentoTargetVersion = getenv('MAGENTO');
-$moduleRoot = __DIR__.'/../';
+$moduleRoot = realpath(__DIR__.'/../');
 
 $passthru = function($shellCommand) {
     echo $shellCommand.PHP_EOL;
