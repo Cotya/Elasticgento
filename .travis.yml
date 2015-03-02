@@ -5,6 +5,7 @@ php:
 env:
   - MAGENTO=1.9.1.0
   - MAGENTO=2.0.42.0-beta10
+sudo: false
 before_install:
   - mkdir test-root/
 install:
