@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Search\Dynamic\IntervalFactory">
+        <arguments>
+            <argument name="configPath" xsi:type="const">\Magento\CatalogSearch\Model\Resource\EngineProvider::CONFIG_ENGINE_PATH</argument>
+            <argument name="intervals" xsi:type="array">
+                <!-- 
+                @todo add documentation why this is needed and how to recognize this easier
+                -->
+                <item name="Cotya\Elasticgento\Model\Resource\Engine" xsi:type="string">Magento\CatalogSearch\Model\Price\Interval</item>
+            </argument>
+            <argument name="scope" xsi:type="const">\Magento\Store\Model\ScopeInterface::SCOPE_STORE</argument>
+        </arguments>
+    </type>
+</config>
