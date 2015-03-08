@@ -16,6 +16,7 @@
     },
     "require-dev": {
         "cotya/ci-helper": "master-dev",
+        "firegento/mage-ci": "master-dev",
         "phpunit/phpunit": "~4.4"
     },
     "repositories": [
