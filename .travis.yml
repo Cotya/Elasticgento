@@ -22,7 +22,7 @@ before_script:
 script:
   - > 
     sh -c "if [ '$TEST_SUITE' = 'Static' ]; then
-      ./vendor/bin/phpcs -v --standard=PSR2 --ignore="/test-root|/lib|/shell|/vendor|/m1" ./;
+      ./vendor/bin/phpcs -v --standard=PSR2 --ignore='/test-root|/lib|/shell|/vendor|/m1' ./;
     else
       vendor/bin/phpunit
     fi"
