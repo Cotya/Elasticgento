@@ -180,7 +180,6 @@ class Script extends Param
                     $data[$key] = $this->getParam($key);
                 }
             }
-            
         } else {
             $data = $this->getParams();
         }

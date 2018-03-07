@@ -152,4 +152,4 @@ class Snapshot
     {
         return $this->_client->request("/_snapshot/" . $path, $method, $data, $query);
     }
-} 
+}

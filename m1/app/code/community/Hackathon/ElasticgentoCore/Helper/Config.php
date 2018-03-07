@@ -59,7 +59,7 @@ class Hackathon_ElasticgentoCore_Helper_Config extends Mage_Core_Helper_Abstract
             if (isset($server['auth_username']) && !empty($server['auth_username'])) {
                 $server['curl'][CURLOPT_USERPWD] = $server['auth_username'].':'.$server['auth_password'];
             }
-            if (isset($server['auth_username']) ){
+            if (isset($server['auth_username'])) {
                 unset($server['auth_username'], $server['auth_password']);
             }
             if (isset($server['https'])) {

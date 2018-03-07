@@ -33,9 +33,7 @@
  * class to display info about version in admin
  *
  */
-class Hackathon_ElasticgentoCore_Block_Adminhtml_System_Config_Fieldset_Version
-    extends Mage_Adminhtml_Block_Abstract
-    implements Varien_Data_Form_Element_Renderer_Interface
+class Hackathon_ElasticgentoCore_Block_Adminhtml_System_Config_Fieldset_Version extends Mage_Adminhtml_Block_Abstract implements Varien_Data_Form_Element_Renderer_Interface
 {
     /**
      * Render fieldset html
@@ -47,7 +45,8 @@ class Hackathon_ElasticgentoCore_Block_Adminhtml_System_Config_Fieldset_Version
     {
         $VersionInfoText = '<div class="comment">' . $this->__('Elasticgento version:') . ' <strong>%s</strong></div>';
         return Mage::helper('elasticgento')->__(
-            $VersionInfoText , Mage::getConfig()->getNode('modules/Hackathon_ElasticgentoCore/version')
+            $VersionInfoText,
+            Mage::getConfig()->getNode('modules/Hackathon_ElasticgentoCore/version')
         );
     }
 }

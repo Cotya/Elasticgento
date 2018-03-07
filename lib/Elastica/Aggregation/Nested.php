@@ -28,4 +28,4 @@ class Nested extends AbstractAggregation
     {
         return $this->setParam("path", $path);
     }
-} 
+}

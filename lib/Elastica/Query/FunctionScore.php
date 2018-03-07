@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica\Query;
+
 use Elastica\Filter\AbstractFilter;
 use Elastica\Script;
 
@@ -57,7 +58,7 @@ class FunctionScore extends AbstractQuery
      * @param AbstractFilter $filter optional filter to apply to the function
      * @return \Elastica\Query\FunctionScore
      */
-    public function addFunction($functionType, $functionParams, AbstractFilter $filter = NULL)
+    public function addFunction($functionType, $functionParams, AbstractFilter $filter = null)
     {
         $function = array(
             $functionType => $functionParams
@@ -75,7 +76,7 @@ class FunctionScore extends AbstractQuery
      * @param AbstractFilter $filter an optional filter to apply to the function
      * @return \Elastica\Query\FunctionScore
      */
-    public function addScriptScoreFunction(Script $script, AbstractFilter $filter = NULL)
+    public function addScriptScoreFunction(Script $script, AbstractFilter $filter = null)
     {
         return $this->addFunction('script_score', $script->toArray(), $filter);
     }
@@ -92,9 +93,16 @@ class FunctionScore extends AbstractQuery
      * @param AbstractFilter $filter a filter associated with this function
      * @return \Elastica\Query\FunctionScore
      */
-    public function addDecayFunction($function, $field, $origin, $scale, $offset = NULL, $decay = NULL, $scaleWeight = NULL,
-                                     AbstractFilter $filter = NULL)
-    {
+    public function addDecayFunction(
+        $function,
+        $field,
+        $origin,
+        $scale,
+        $offset = null,
+        $decay = null,
+        $scaleWeight = null,
+                                     AbstractFilter $filter = null
+    ) {
         $functionParams = array(
             $field => array(
                 'origin' => $origin,
@@ -118,7 +126,7 @@ class FunctionScore extends AbstractQuery
      * @param float $boostFactor the boost factor value
      * @param AbstractFilter $filter a filter associated with this function
      */
-    public function addBoostFactorFunction($boostFactor, AbstractFilter $filter = NULL)
+    public function addBoostFactorFunction($boostFactor, AbstractFilter $filter = null)
     {
         $this->addFunction('boost_factor', $boostFactor, $filter);
     }
@@ -129,7 +137,7 @@ class FunctionScore extends AbstractQuery
      * @param AbstractFilter $filter a filter associated with this function
      * @param float $boost an optional boost value associated with this function
      */
-    public function addRandomScoreFunction($seed, AbstractFilter $filter = NULL, $boost = NULL)
+    public function addRandomScoreFunction($seed, AbstractFilter $filter = null, $boost = null)
     {
         $this->addFunction('random_score', array('seed' => $seed), $filter, $boost);
     }
@@ -169,7 +177,7 @@ class FunctionScore extends AbstractQuery
      * @param int $seed Set a seed value to return results in the same random order for consistent pagination.
      * @return \Elastica\Query\FunctionScore
      */
-    public function setRandomScore($seed = NULL)
+    public function setRandomScore($seed = null)
     {
         $seedParam = array();
         if (!is_null($seed)) {

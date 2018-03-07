@@ -11,7 +11,6 @@ namespace Elastica\Exception;
  */
 class ElasticsearchException extends \Exception
 {
-
     const REMOTE_TRANSPORT_EXCEPTION = 'RemoteTransportException';
 
     /**
@@ -95,5 +94,4 @@ class ElasticsearchException extends \Exception
     {
         return $this->_isRemote;
     }
-
 }

@@ -79,4 +79,4 @@ class DateHistogram extends Histogram
     {
         return $this->setParam("format", $format);
     }
-} 
+}

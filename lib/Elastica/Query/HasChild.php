@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica\Query;
+
 use Elastica\Query as BaseQuery;
 
 /**

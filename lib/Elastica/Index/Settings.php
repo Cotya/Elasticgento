@@ -213,7 +213,6 @@ class Settings
      */
     public function getMergePolicyType()
     {
-
         return $this->get('merge.policy.type');
     }
 

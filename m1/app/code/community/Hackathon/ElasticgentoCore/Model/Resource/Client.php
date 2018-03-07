@@ -97,9 +97,11 @@ class Hackathon_ElasticgentoCore_Model_Resource_Client extends \Elastica\Client
      */
     final public function getIndexName($storeId = null)
     {
-        return sprintf('%s_store_%s',
+        return sprintf(
+            '%s_store_%s',
             (string)Mage::getConfig()->getNode('global/resources/default_setup/connection/dbname'),
-            $storeId);
+            $storeId
+        );
     }
 
     /**

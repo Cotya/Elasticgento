@@ -90,14 +90,13 @@ class Hackathon_ElasticgentoCatalog_Block_Catalog_Layer_View extends Mage_Catalo
                 } elseif ($attribute->getSourceModel() == 'eav/entity_attribute_source_boolean') {
                     #$filterBlockName = $this->_booleanFilterBlockName;
                 } else {
-                    Mage::log($this->_categoryBlockName,null,'bla.log',true);
+                    Mage::log($this->_categoryBlockName, null, 'bla.log', true);
                     $filterBlockName = $this->_attributeFilterBlockName;
                     $filters[$attribute->getAttributeCode() . '_filter'] = $this->getLayout()->createBlock($filterBlockName)
                         ->setLayer($this->getLayer())
                         ->setAttributeModel($attribute)
                         ->init();
                 }
-
             }
         }
         foreach ($filters as $filterName => $block) {

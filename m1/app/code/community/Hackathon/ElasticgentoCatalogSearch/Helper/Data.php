@@ -69,7 +69,7 @@ class Hackathon_ElasticgentoCatalogSearch_Helper_Data extends Mage_Core_Helper_A
         $result = array();
         foreach ($productAttributes as $productAttribute) {
             /** @var $productAttr Mage_Catalog_Model_Resource_Eav_Attribute **/
-            if($productAttribute->getIsSearchable()){
+            if ($productAttribute->getIsSearchable()) {
                 $result[] = $productAttribute;
             }
         }
@@ -78,9 +78,9 @@ class Hackathon_ElasticgentoCatalogSearch_Helper_Data extends Mage_Core_Helper_A
     }
 
     /**
-     * 
+     *
      * returns field names to use for a search query
-     * 
+     *
      * @return string[]
      */
     public function getSearchableElasticSearchFieldNames()
@@ -91,17 +91,16 @@ class Hackathon_ElasticgentoCatalogSearch_Helper_Data extends Mage_Core_Helper_A
         $result[] = 'tags';
         $searchableAttributes = $this->getSearchableProductAttributes();
         
-        foreach($searchableAttributes as $attribute){
-            if($attribute->getBackendType() == 'text'){
+        foreach ($searchableAttributes as $attribute) {
+            if ($attribute->getBackendType() == 'text') {
                 $result[] = $attribute->getAttributeCode();
-            }elseif($attribute->getFrontendInput() == 'select'){
+            } elseif ($attribute->getFrontendInput() == 'select') {
                 $result[] = $attribute->getAttributeCode().'_value';
-            }else{
+            } else {
                 //var_dump($attribute->getData());
             }
         }
         
         return $result;
     }
-
 }

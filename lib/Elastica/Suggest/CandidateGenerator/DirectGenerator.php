@@ -2,7 +2,6 @@
 
 namespace Elastica\Suggest\CandidateGenerator;
 
-
 /**
  * Class DirectGenerator
  * @package Elastica\Suggest\Phrase

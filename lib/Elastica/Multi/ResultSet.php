@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica\Multi;
+
 use Elastica\Exception\InvalidException;
 use Elastica\Response;
 use Elastica\Search as BaseSearch;

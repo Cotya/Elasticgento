@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica\Index;
+
 use Elastica\Cluster;
 use Elastica\Index as BaseIndex;
 use Elastica\Request;

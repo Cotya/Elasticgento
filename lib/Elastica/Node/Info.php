@@ -117,7 +117,7 @@ class Info
      */
     public function getPlugins()
     {
-        if(!in_array('plugins', $this->_params)) {
+        if (!in_array('plugins', $this->_params)) {
             //Plugin data was not retrieved when refresh() was called last. Get it now.
             $this->_params[] = 'plugins';
             $this->refresh($this->_params);
@@ -132,8 +132,8 @@ class Info
      */
     public function hasPlugin($name)
     {
-        foreach($this->getPlugins() as $plugin) {
-            if($plugin['name'] == $name) {
+        foreach ($this->getPlugins() as $plugin) {
+            if ($plugin['name'] == $name) {
                 return true;
             }
         }

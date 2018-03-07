@@ -182,9 +182,7 @@ abstract class Hackathon_ElasticgentoCore_Model_Resource_Collection extends Mage
     protected function getAdapter()
     {
         if (null === $this->_client) {
-
             $this->_client = Mage::getResourceModel('elasticgento/client');
-
         }
         return $this->_client;
     }
@@ -369,7 +367,7 @@ abstract class Hackathon_ElasticgentoCore_Model_Resource_Collection extends Mage
      * @param null $condition
      * @return Mage_Eav_Model_Entity_Collection_Abstract|void
      */
-    public function addAttributeToFilter($attribute, $condition = NULL, $joinType = 'inner')
+    public function addAttributeToFilter($attribute, $condition = null, $joinType = 'inner')
     {
         list($operator, $value) = each($condition);
 

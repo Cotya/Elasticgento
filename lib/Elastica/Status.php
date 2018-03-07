@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica;
+
 use Elastica\Exception\ResponseException;
 use Elastica\Index\Status as IndexStatus;
 

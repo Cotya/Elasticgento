@@ -29,9 +29,9 @@ class TermsStats extends AbstractFacet
      * @param  string                         $keyField The key field name for the query.
      * @return \Elastica\Facet\TermsStats
      */
-    public function setKeyField( $keyField )
+    public function setKeyField($keyField)
     {
-        return $this->setParam( 'key_field', $keyField );
+        return $this->setParam('key_field', $keyField);
     }
 
     /**
@@ -40,9 +40,9 @@ class TermsStats extends AbstractFacet
      * @param  string                         $valueScript The script to do calculations on the statistical values
      * @return \Elastica\Facet\TermsStats
      */
-    public function setValueScript( $valueScript )
+    public function setValueScript($valueScript)
     {
-        return $this->setParam( 'value_script', $valueScript );
+        return $this->setParam('value_script', $valueScript);
     }
 
     /**
@@ -68,9 +68,9 @@ class TermsStats extends AbstractFacet
      * @param  string                         $valueField The field to compute statistical values for
      * @return \Elastica\Facet\TermsStats
      */
-    public function setValueField( $valueField )
+    public function setValueField($valueField)
     {
-        return $this->setParam( 'value_field', $valueField );
+        return $this->setParam('value_field', $valueField);
     }
 
     /**
@@ -93,9 +93,8 @@ class TermsStats extends AbstractFacet
      */
     public function toArray()
     {
-        $this->_setFacetParam( 'terms_stats', $this->_params );
+        $this->_setFacetParam('terms_stats', $this->_params);
 
         return parent::toArray();
     }
-
 }

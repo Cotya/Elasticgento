@@ -28,5 +28,4 @@ class PartialShardFailureException extends ResponseException
         $shardsStatistics = $response->getShardsStatistics();
         $this->message = json_encode($shardsStatistics['failed']);
     }
-
 }

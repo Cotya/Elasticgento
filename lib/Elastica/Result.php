@@ -58,7 +58,7 @@ class Result
     public function hasParam($name)
     {
         return isset($this->_hit[$name]);
-    }    
+    }
     
     /**
      * Returns the hit id
@@ -92,13 +92,13 @@ class Result
 
     /**
      * Returns whether result has fields
-     * 
+     *
      * @return bool
      */
     public function hasFields()
     {
         return $this->hasParam('fields');
-    }    
+    }
     
     /**
      * Returns the index name of the result

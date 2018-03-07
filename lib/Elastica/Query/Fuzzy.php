@@ -21,7 +21,7 @@ class Fuzzy extends AbstractQuery
      * @param  string                    $value     String to search for
      * @return \Elastica\Query\Fuzzy Current object
      */
-    public function __construct ($fieldName = null, $value = null)
+    public function __construct($fieldName = null, $value = null)
     {
         if ($fieldName and $value) {
             $this->setField($fieldName, $value);
@@ -35,7 +35,7 @@ class Fuzzy extends AbstractQuery
      * @param  string                    $value     String to search for
      * @return \Elastica\Query\Fuzzy Current object
      */
-    public function setField ($fieldName, $value)
+    public function setField($fieldName, $value)
     {
         if (!is_string($value) or !is_string($fieldName)) {
             throw new InvalidException('The field and value arguments must be of type string.');
@@ -53,11 +53,12 @@ class Fuzzy extends AbstractQuery
      * @param  mixed                     $value      Value of the parameter
      * @return \Elastica\Query\Fuzzy Current object
      */
-    public function setFieldOption ($param, $value) {
+    public function setFieldOption($param, $value)
+    {
         //Retrieve the single existing field for alteration.
         $params = $this->getParams();
         if (count($params) < 1) {
-           throw new InvalidException('No field has been set');
+            throw new InvalidException('No field has been set');
         }
         $keyArray = array_keys($params);
         $params[$keyArray[0]][$param] = $value;

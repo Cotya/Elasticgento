@@ -36,5 +36,4 @@
  */
 class Hackathon_ElasticgentoCatalog_Helper_Data extends Mage_Core_Helper_Abstract
 {
-
 }

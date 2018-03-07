@@ -32,8 +32,7 @@
  * Elasticgento CatalogSearch fulltext resource model replacement
  *
  */
-class Hackathon_ElasticgentoCatalogSearch_Model_Catalogsearch_Resource_Fulltext
-    extends Mage_CatalogSearch_Model_Resource_Fulltext
+class Hackathon_ElasticgentoCatalogSearch_Model_Catalogsearch_Resource_Fulltext extends Mage_CatalogSearch_Model_Resource_Fulltext
 {
 
     /**
@@ -51,7 +50,7 @@ class Hackathon_ElasticgentoCatalogSearch_Model_Catalogsearch_Resource_Fulltext
         $query
     ) {
         $helper = Mage::helper('elasticgento_catalogsearch');
-        $flag   = Mage::getModel('core/flag',['flag_code'=>'elasticgento_catalogsearch_inactive_till'])->loadSelf();
+        $flag   = Mage::getModel('core/flag', ['flag_code'=>'elasticgento_catalogsearch_inactive_till'])->loadSelf();
         $now = time();
 
         if (!$helper->isSearchActive() || $flag->getFlagData()>$now) {
@@ -59,16 +58,13 @@ class Hackathon_ElasticgentoCatalogSearch_Model_Catalogsearch_Resource_Fulltext
         }
 
         if (!$query->getIsProcessed()) {
-            try{
-
+            try {
                 $adapter = $helper->getAdapter();
                 $result = $this->fetchSearchResultFromElasticSearch($adapter, $queryText, $query);
-                if($result && $result instanceof \Elastica\ResultSet )
-                {
+                if ($result && $result instanceof \Elastica\ResultSet) {
                     $this->fillSearchResultInMagentoResultTable($result, $query);
                 }
-
-            }catch( \Exception $e ){
+            } catch (\Exception $e) {
                 Mage::logException($e);
                 $flag->setFlagData($now+(60*5))->save();
                 return parent::prepareResult($object, $queryText, $query);
@@ -87,23 +83,22 @@ class Hackathon_ElasticgentoCatalogSearch_Model_Catalogsearch_Resource_Fulltext
         $searchAdapter,
         $queryText,
         $query
-    )
-    {
+    ) {
         $elasticQuery = new Elastica\Query();
         $boolQuery = new \Elastica\Query\Bool();
         $fieldnames = Mage::helper('elasticgento_catalogsearch/data')->getSearchableElasticSearchFieldNames();
-        foreach($fieldnames as $fieldname){
+        foreach ($fieldnames as $fieldname) {
             $queryFuzzyLikeThis = new \Elastica\Query\FuzzyLikeThis();
             $queryFuzzyLikeThis->addFields(
                 [$fieldname]
             );
-            if($fieldname=='manufacturer_value'){
+            if ($fieldname=='manufacturer_value') {
                 $queryFuzzyLikeThis->setBoost(100);
             }
-            if(
+            if (
                 $fieldname=='name'
                 || $fieldname=='tags'
-            ){
+            ) {
                 $queryFuzzyLikeThis->setBoost(50);
             }
             $queryFuzzyLikeThis->setLikeText($queryText);
@@ -133,9 +128,7 @@ class Hackathon_ElasticgentoCatalogSearch_Model_Catalogsearch_Resource_Fulltext
     protected function fillSearchResultInMagentoResultTable(
         \Elastica\ResultSet $resultSet,
         Mage_CatalogSearch_Model_Query $query
-    )
-    {
-
+    ) {
         $writeAdapter = $this->_getWriteAdapter();
 
         $insertQuery = $this->buildInsertQuery($resultSet, $query->getId());
@@ -143,12 +136,10 @@ class Hackathon_ElasticgentoCatalogSearch_Model_Catalogsearch_Resource_Fulltext
         $writeAdapter->query($insertQuery);
 
         $query->setIsProcessed(1);
-
     }
 
-    protected function buildInsertQuery( \Elastica\ResultSet $resultSet, $queryId )
+    protected function buildInsertQuery(\Elastica\ResultSet $resultSet, $queryId)
     {
-
         $writeAdapter = $this->_getWriteAdapter();
 
         $query = 'INSERT';
@@ -170,14 +161,14 @@ class Hackathon_ElasticgentoCatalogSearch_Model_Catalogsearch_Resource_Fulltext
 
         $valueRows = [];
 
-        foreach($resultSet->getResults() as $result){
+        foreach ($resultSet->getResults() as $result) {
             $productId = $result->getData()['entity_id'][0];
             $values = [
                 (int) $queryId,
                 (int) $productId,
                 (float) $result->getScore()
             ];
-            $valueRows[] = '('.implode(', ',$values).')';
+            $valueRows[] = '('.implode(', ', $values).')';
         };
 
         $query .= ' '.implode(', ', $valueRows);
@@ -192,7 +183,6 @@ class Hackathon_ElasticgentoCatalogSearch_Model_Catalogsearch_Resource_Fulltext
         }
 
         return $query;
-
     }
 
     /**
@@ -208,5 +198,4 @@ class Hackathon_ElasticgentoCatalogSearch_Model_Catalogsearch_Resource_Fulltext
         $this->resetSearchResults();
         return $this;
     }
-
 }

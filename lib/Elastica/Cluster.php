@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica;
+
 use Elastica\Cluster\Health;
 use Elastica\Cluster\Settings;
 use Elastica\Exception\NotImplementedException;

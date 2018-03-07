@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica;
+
 use Elastica\Exception\InvalidException;
 
 /**
@@ -110,7 +111,8 @@ class ResultSet implements \Iterator, \Countable, \ArrayAccess
      * Returns true if the response contains suggestion results; false otherwise
      * @return bool
      */
-    public function hasSuggests(){
+    public function hasSuggests()
+    {
         $data = $this->_response->getData();
         return isset($data['suggest']);
     }
@@ -120,7 +122,7 @@ class ResultSet implements \Iterator, \Countable, \ArrayAccess
     *
     * @return array suggest results
     */
-    public function getSuggests() 
+    public function getSuggests()
     {
         $data = $this->_response->getData();
         return isset($data['suggest']) ? $data['suggest'] : array();

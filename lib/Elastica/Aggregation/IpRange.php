@@ -2,7 +2,6 @@
 
 namespace Elastica\Aggregation;
 
-
 use Elastica\Exception\InvalidException;
 
 /**
@@ -63,4 +62,4 @@ class IpRange extends AbstractAggregation
     {
         return $this->addParam("ranges", array("mask" => $mask));
     }
-} 
+}

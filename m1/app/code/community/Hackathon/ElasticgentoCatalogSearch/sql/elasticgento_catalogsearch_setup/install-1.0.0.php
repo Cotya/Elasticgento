@@ -41,11 +41,13 @@ $installer->startSetup();
 try {
     $installer->getConnection()->addColumn(
         $installer->getTable('catalog/eav_attribute'),
-        'search_weight', "tinyint(1) unsigned NOT NULL DEFAULT '1' after `is_searchable`"
+        'search_weight',
+        "tinyint(1) unsigned NOT NULL DEFAULT '1' after `is_searchable`"
     );
     $installer->getConnection()->addColumn(
         $installer->getTable('catalog/eav_attribute'),
-        'search_analyzer', "varchar(255)NOT NULL DEFAULT '' after `search_weight`"
+        'search_analyzer',
+        "varchar(255)NOT NULL DEFAULT '' after `search_weight`"
     );
 } catch (Exception $e) {
     // ignore

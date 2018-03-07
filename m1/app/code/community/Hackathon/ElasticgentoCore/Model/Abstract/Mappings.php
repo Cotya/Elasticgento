@@ -96,7 +96,7 @@ abstract class Hackathon_ElasticgentoCore_Model_Abstract_Mappings
      *
      * @return string
      */
-    abstract function getEntityType();
+    abstract public function getEntityType();
 
     /**
      * Set store scope
@@ -244,13 +244,13 @@ abstract class Hackathon_ElasticgentoCore_Model_Abstract_Mappings
             $result = $resource->getConnection('core_read')->fetchAll($select, array('entity_type_id' => $this->getEntityTypeId()));
             Mage::getSingleton('eav/config')->importAttributesData($this->getEntityType(), $result);
             foreach ($result as $data) {
-                if(
+                if (
                     $data['is_searchable'] == "0"
                     && $data['is_filterable'] == "0"
                     && $data['used_in_product_listing'] == "0"
                     && $data['is_visible_on_front'] == "0"
                     && !in_array($data['attribute_code'], $forcedAttributeCodes)
-                ){
+                ) {
                     continue;
                 }
                 $this->_attributeCodes[$data['attribute_id']] = $data['attribute_code'];

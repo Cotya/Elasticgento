@@ -2,7 +2,6 @@
 
 namespace Elastica;
 
-
 use Elastica\Exception\NotImplementedException;
 use Elastica\Suggest\AbstractSuggest;
 
@@ -16,7 +15,7 @@ class Suggest extends Param
     /**
      * @param AbstractSuggest $suggestion
      */
-    function __construct(AbstractSuggest $suggestion = NULL)
+    public function __construct(AbstractSuggest $suggestion = null)
     {
         if (!is_null($suggestion)) {
             $this->addSuggestion($suggestion);
@@ -51,7 +50,7 @@ class Suggest extends Param
      */
     public static function create($suggestion)
     {
-        switch(true){
+        switch (true) {
             case $suggestion instanceof Suggest:
                 return $suggestion;
             case $suggestion instanceof AbstractSuggest:

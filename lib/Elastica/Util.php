@@ -94,7 +94,7 @@ class Util
     {
         $string = preg_replace('/([A-Z])/', '_$1', $string);
 
-        return strtolower(substr($string,1));
+        return strtolower(substr($string, 1));
     }
 
     /**

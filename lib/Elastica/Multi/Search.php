@@ -70,17 +70,17 @@ class Search
         return $this;
     }
 
-  /**
-   * @param  \Elastica\Search $search
-   * @param  string           $key      Optional key
-   * @return \Elastica\Multi\Search
-   */
+    /**
+     * @param  \Elastica\Search $search
+     * @param  string           $key      Optional key
+     * @return \Elastica\Multi\Search
+     */
     public function addSearch(BaseSearch $search, $key = null)
     {
         if ($key) {
-          $this->_searches[$key] = $search;
+            $this->_searches[$key] = $search;
         } else {
-          $this->_searches[]     = $search;
+            $this->_searches[]     = $search;
         }
 
         return $this;

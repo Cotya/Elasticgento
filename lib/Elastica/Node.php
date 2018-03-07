@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica;
+
 use Elastica\Node\Info;
 use Elastica\Node\Stats;
 

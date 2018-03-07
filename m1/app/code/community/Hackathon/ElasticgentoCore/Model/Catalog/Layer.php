@@ -51,7 +51,6 @@ class Hackathon_ElasticgentoCore_Model_Catalog_Layer extends Mage_Catalog_Model_
             $collection->setStoreId($category->getStoreId());
             $this->prepareProductCollection($collection);
             $this->_productCollections[$category->getId()] = $collection;
-
         }
         return $collection;
     }

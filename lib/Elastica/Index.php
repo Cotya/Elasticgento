@@ -229,14 +229,14 @@ class Index implements SearchableInterface
             if (is_array($options)) {
                 foreach ($options as $key => $value) {
                     switch ($key) {
-                        case 'recreate' :
+                        case 'recreate':
                             try {
                                 $this->delete();
                             } catch (ResponseException $e) {
                                 // Table can't be deleted, because doesn't exist
                             }
                             break;
-                        case 'routing' :
+                        case 'routing':
                             $query = array('routing' => $value);
                             break;
                         default:

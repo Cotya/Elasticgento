@@ -247,7 +247,8 @@ class Client
      * @throws \Elastica\Exception\InvalidException If docs is empty
      * @link http://www.elasticsearch.org/guide/reference/api/bulk.html
      */
-    public function updateDocuments(array $docs) {
+    public function updateDocuments(array $docs)
+    {
         if (empty($docs)) {
             throw new InvalidException('Array has to consist of at least one element');
         }
@@ -301,9 +302,7 @@ class Client
 
         if ($data instanceof Script) {
             $requestData = $data->toArray();
-
         } elseif ($data instanceof Document) {
-
             $requestData = array('doc' => $data->getData());
 
             if ($data->getDocAsUpsert()) {
@@ -339,7 +338,6 @@ class Client
 
         //If an upsert document exists
         if ($data instanceof Script || $data instanceof Document) {
-
             if ($data->hasUpsert()) {
                 $requestData['upsert'] = $data->getUpsert()->getData();
             }
@@ -446,15 +444,13 @@ class Client
 
     /**
      * Determines whether a valid connection is available for use.
-     * 
+     *
      * @return bool
      */
     public function hasConnection()
     {
-        foreach ($this->_connections as $connection)
-        {
-            if ($connection->isEnabled())
-            {
+        foreach ($this->_connections as $connection) {
+            if ($connection->isEnabled()) {
                 return true;
             }
         }
@@ -590,7 +586,6 @@ class Client
             $this->_lastResponse = $response;
 
             return $response;
-
         } catch (ConnectionException $e) {
             $connection->setEnabled(false);
 
@@ -600,8 +595,7 @@ class Client
             }
 
             // In case there is no valid connection left, throw exception which caused the disabling of the connection.
-            if (!$this->hasConnection())
-            {
+            if (!$this->hasConnection()) {
                 throw $e;
             }
             return $this->request($path, $method, $data, $query);

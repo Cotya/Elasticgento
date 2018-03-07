@@ -2,7 +2,6 @@
 
 namespace Elastica\Filter;
 
-
 /**
  * Class GeohashCell
  * @package Elastica

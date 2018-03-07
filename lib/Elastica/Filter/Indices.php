@@ -2,7 +2,6 @@
 
 namespace Elastica\Filter;
 
-
 /**
  * Class Indices
  * @package Elastica\Filter
@@ -48,4 +47,4 @@ class Indices extends AbstractFilter
     {
         return $this->setParam('no_match_filter', $filter->toArray());
     }
-} 
+}

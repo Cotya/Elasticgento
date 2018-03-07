@@ -83,8 +83,8 @@ class Terms extends AbstractFilter
         );
         
         $index = $options;
-        if(is_array($options)) {
-            if(isset($options['index'])) {
+        if (is_array($options)) {
+            if (isset($options['index'])) {
                 $index = $options['index'];
                 unset($options['index']);
             }
