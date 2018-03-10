@@ -2,7 +2,6 @@
 
 namespace Elastica\Query;
 
-
 /**
  * Class Common
  * @package Elastica

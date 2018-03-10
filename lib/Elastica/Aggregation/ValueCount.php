@@ -28,4 +28,4 @@ class ValueCount extends AbstractAggregation
     {
         return $this->setParam('field', $field);
     }
-} 
+}

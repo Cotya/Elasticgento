@@ -84,7 +84,7 @@ class Hackathon_ElasticgentoCore_Model_Catalog_Layer_Filter_Attribute extends Ma
     {
         if (false === $this->_isValidFilter($value)) {
             $value = array();
-        } else if (false === is_array($value)) {
+        } elseif (false === is_array($value)) {
             $value = array($value);
         }
         $this->getLayer()->getProductCollection()->addAttributeToFilter($this->getAttributeModel()->getAttributeCode(), array('eq' => $value));

@@ -59,7 +59,7 @@ class GeoDistance extends AbstractFacet
         /**
          * Set the geo_distance in the abstract as param.
          */
-        $this->_setFacetParam ('geo_distance', $this->_params);
+        $this->_setFacetParam('geo_distance', $this->_params);
 
         return parent::toArray();
     }

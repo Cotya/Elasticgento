@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica;
+
 use Elastica\Exception\InvalidException;
 
 /**
@@ -110,14 +111,14 @@ class Param
      */
     public function addParam($key, $value)
     {
-        if($key != null) {
+        if ($key != null) {
             if (!isset($this->_params[$key])) {
                 $this->_params[$key] = array();
             }
 
             $this->_params[$key][] = $value;
         } else {
-            $this->_params = $value;            
+            $this->_params = $value;
         }
 
         return $this;

@@ -14,7 +14,6 @@ use Elastica\Exception\InvalidException;
  */
 abstract class AbstractGeoDistance extends AbstractFilter
 {
-
     const LOCATION_TYPE_GEOHASH = 'geohash';
     const LOCATION_TYPE_LATLON = 'latlon';
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica\Rescore;
+
 use Elastica\Param;
 
 /**
@@ -13,8 +14,8 @@ use Elastica\Param;
  */
 abstract class AbstractRescore extends Param
 {
-	/**
-	 * Overriden to return rescore as name
+    /**
+     * Overriden to return rescore as name
      *
      * @return string name
      */

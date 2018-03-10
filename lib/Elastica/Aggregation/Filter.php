@@ -2,7 +2,6 @@
 
 namespace Elastica\Aggregation;
 
-
 use Elastica\Filter\AbstractFilter;
 
 /**

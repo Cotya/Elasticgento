@@ -134,5 +134,4 @@ class Bool extends AbstractFilter
 
         return $this;
     }
-
 }

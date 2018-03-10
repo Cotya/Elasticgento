@@ -1,7 +1,6 @@
 <?php
 namespace Elastica\Aggregation;
 
-
 use Elastica\Exception\InvalidException;
 
 /**
@@ -42,4 +41,4 @@ class Range extends AbstractSimpleAggregation
     {
         return $this->setParam('keyed', (bool)$keyed);
     }
-} 
+}

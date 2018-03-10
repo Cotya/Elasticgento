@@ -55,7 +55,6 @@ class Log extends AbstractLogger
         } else {
             error_log($this->_lastMessage);
         }
-
     }
 
     /**

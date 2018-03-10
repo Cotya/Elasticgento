@@ -4,7 +4,6 @@ namespace Elastica\Suggest;
 
 use Elastica\Suggest\CandidateGenerator\AbstractCandidateGenerator;
 
-
 /**
  * Class Phrase
  * @package Elastica\Suggest

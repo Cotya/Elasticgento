@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica\Query;
+
 use Elastica\Exception\InvalidException;
 
 /**
@@ -550,7 +551,7 @@ class Builder extends AbstractQuery
     {
         $this->fieldOpen('match_all');
 
-        if ( ! $boost == null && is_numeric($boost)) {
+        if (! $boost == null && is_numeric($boost)) {
             $this->field('boost', (float) $boost);
         }
 

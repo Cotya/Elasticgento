@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica;
+
 use Elastica\Aggregation\AbstractAggregation;
 use Elastica\Exception\InvalidException;
 use Elastica\Exception\NotImplementedException;
@@ -207,7 +208,6 @@ class Query extends Param
     public function setSize($size = 10)
     {
         return $this->setParam('size', $size);
-        
     }
 
     /**
@@ -374,7 +374,7 @@ class Query extends Param
      */
     public function setSuggest(Suggest $suggest)
     {
-        $this->addParam(NULL, $suggest->toArray());
+        $this->addParam(null, $suggest->toArray());
         $this->_suggest = 1;
     }
 
@@ -388,6 +388,3 @@ class Query extends Param
         $this->setParam('rescore', $rescore->toArray());
     }
 }
-
-
-

@@ -49,17 +49,20 @@ class Hackathon_ElasticgentoCore_Model_Adminhtml_Observer
         $attribute = $observer->getEvent()->getAttribute();
         /** @var $form Varien_Data_Form */
         $form = $observer->getEvent()->getForm();
-        $fieldset = $form->addFieldset('elasticgento',
+        $fieldset = $form->addFieldset(
+            'elasticgento',
             array('legend' => Mage::helper('elasticgento')->__('Elasticgento'))
         );
 
         $fieldset->addField(
             'search_weight',
-            'text', array(
+            'text',
+            array(
                 'name' => 'search_weight',
                 'value' => '0',
                 'label' => Mage::helper('elasticgento')->__('Search Weight'),
-            ));
+            )
+        );
         if ($attribute->getAttributeCode() == 'name') {
             $form->getElement('is_searchable')->setDisabled(1);
         };
@@ -79,6 +82,5 @@ class Hackathon_ElasticgentoCore_Model_Adminhtml_Observer
             Mage::getSingleton('index/indexer')->getProcessByCode('catalog_product_flat')
                 ->changeStatus(Mage_Index_Model_Process::STATUS_REQUIRE_REINDEX);
         }
-
     }
 }

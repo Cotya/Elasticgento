@@ -62,4 +62,4 @@ class SimpleQueryString extends AbstractQuery
     {
         return $this->setParam("analyzer", $analyzer);
     }
-} 
+}

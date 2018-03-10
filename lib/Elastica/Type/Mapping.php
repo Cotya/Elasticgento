@@ -201,7 +201,6 @@ class Mapping
     public function setTtl(array $params)
     {
         return $this->setParam('_ttl', $params);
-
     }
 
     /**

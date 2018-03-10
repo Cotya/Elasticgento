@@ -94,4 +94,4 @@ class Terms extends AbstractSimpleAggregation
     {
         return $this->setParam("execution_hint", $hint);
     }
-} 
+}

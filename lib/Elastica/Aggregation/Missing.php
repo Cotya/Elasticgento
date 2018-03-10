@@ -28,4 +28,4 @@ class Missing extends AbstractAggregation
     {
         return $this->setParam('field', $field);
     }
-} 
+}

@@ -18,4 +18,4 @@ class DateRange extends Range
     {
         return $this->setParam('format', $format);
     }
-} 
+}

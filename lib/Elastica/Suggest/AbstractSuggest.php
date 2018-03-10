@@ -2,7 +2,6 @@
 
 namespace Elastica\Suggest;
 
-
 use Elastica\Param;
 
 /**

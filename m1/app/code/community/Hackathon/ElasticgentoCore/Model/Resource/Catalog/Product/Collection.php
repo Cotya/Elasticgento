@@ -144,11 +144,11 @@ class Hackathon_ElasticgentoCore_Model_Resource_Catalog_Product_Collection exten
     {
         $urlRewrites = null;
         if ($this->_cacheConf) {
-        if (!($urlRewrites = Mage::app()->loadCache($this->_cacheConf['prefix'] . 'urlrewrite' . 'urlrewrite'))) {
-            $urlRewrites = null;
-        } else {
-            $urlRewrites = unserialize($urlRewrites);
-        }
+            if (!($urlRewrites = Mage::app()->loadCache($this->_cacheConf['prefix'] . 'urlrewrite' . 'urlrewrite'))) {
+                $urlRewrites = null;
+            } else {
+                $urlRewrites = unserialize($urlRewrites);
+            }
         }
 
         if (!$urlRewrites) {
@@ -171,7 +171,7 @@ class Hackathon_ElasticgentoCore_Model_Resource_Catalog_Product_Collection exten
             }
 
             if ($this->_cacheConf) {
-            Mage::app()->saveCache(
+                Mage::app()->saveCache(
                 serialize($urlRewrites),
                 $this->_cacheConf['prefix'] . 'urlrewrite' . 'urlrewrite',
                 array_merge($this->_cacheConf['tags'], array(Mage_Catalog_Model_Product_Url::CACHE_TAG)),

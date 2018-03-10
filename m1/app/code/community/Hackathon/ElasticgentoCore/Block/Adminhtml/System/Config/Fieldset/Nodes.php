@@ -34,8 +34,7 @@
  * class to display info about version in admin
  *
  */
-class Hackathon_ElasticgentoCore_Block_Adminhtml_System_Config_Fieldset_Nodes
-    extends Mage_Adminhtml_Block_System_Config_Form_Field_Array_Abstract
+class Hackathon_ElasticgentoCore_Block_Adminhtml_System_Config_Fieldset_Nodes extends Mage_Adminhtml_Block_System_Config_Form_Field_Array_Abstract
 {
     /**
      * overide method _prepareToRender in Mage_Adminhtml_Block_System_Config_Form_Field_Array_Abstract
@@ -47,7 +46,6 @@ class Hackathon_ElasticgentoCore_Block_Adminhtml_System_Config_Fieldset_Nodes
      */
     protected function _prepareToRender()
     {
-
         $this->_typeRenderer = null;
 
         $this->addColumn('host', array(
@@ -93,7 +91,8 @@ class Hackathon_ElasticgentoCore_Block_Adminhtml_System_Config_Fieldset_Nodes
                     ->setTitle($columnName)
                     ->setExtraParams('style="width:50px"')
                     ->setOptions(
-                        $this->getElement()->getValues())
+                        $this->getElement()->getValues()
+                    )
                     ->toHtml();
                 break;
             default:
@@ -102,7 +101,8 @@ class Hackathon_ElasticgentoCore_Block_Adminhtml_System_Config_Fieldset_Nodes
         }
     }
 
-    protected function _prepareArrayRow(Varien_Object $row) {
+    protected function _prepareArrayRow(Varien_Object $row)
+    {
         if ($row->getHttps()) {
             $row->setHttps(' checked="checked"');
         } else {

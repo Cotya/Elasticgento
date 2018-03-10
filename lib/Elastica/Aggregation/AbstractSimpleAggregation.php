@@ -2,7 +2,6 @@
 
 namespace Elastica\Aggregation;
 
-
 use Elastica\Script;
 
 abstract class AbstractSimpleAggregation extends AbstractAggregation
@@ -30,4 +29,4 @@ abstract class AbstractSimpleAggregation extends AbstractAggregation
         }
         return $this->setParam('script', $script);
     }
-} 
+}

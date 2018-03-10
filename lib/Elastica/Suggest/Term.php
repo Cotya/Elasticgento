@@ -2,7 +2,6 @@
 
 namespace Elastica\Suggest;
 
-
 /**
  * Class Term
  * @package Elastica\Suggest

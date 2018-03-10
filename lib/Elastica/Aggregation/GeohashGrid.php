@@ -58,4 +58,4 @@ class GeohashGrid extends AbstractAggregation
     {
         return $this->setParam("shard_size", $shardSize);
     }
-} 
+}

@@ -1,8 +1,8 @@
 <?php
 /**
- * 
- * 
- * 
+ *
+ *
+ *
  */
 require_once __DIR__.'/abstract.php';
 require_once __DIR__.'/autoloader_initializer.php';
@@ -39,12 +39,8 @@ class Mage_Shell_Elasticgento extends AutoloaderInitializer
         $indexer->reindexAll();
         
         //echo "\r\n\r\n Finished \r\n\r\n";
-
-
     }
 }
 
 $shell = new Mage_Shell_Elasticgento();
 $shell->run();
-
-

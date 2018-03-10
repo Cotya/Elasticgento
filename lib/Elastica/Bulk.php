@@ -225,17 +225,16 @@ class Bulk
      */
     public function addData($data, $opType = null)
     {
-        if(!is_array($data)){
+        if (!is_array($data)) {
             $data = array($data);
         }
 
-        foreach ($data as $actionData){
-
-            if ($actionData instanceOf Script) {
+        foreach ($data as $actionData) {
+            if ($actionData instanceof Script) {
                 $this->addScript($actionData, $opType);
-            }else if ($actionData instanceof Document) {
+            } elseif ($actionData instanceof Document) {
                 $this->addDocument($actionData, $opType);
-            }else{
+            } else {
                 throw new \InvalidArgumentException("Data should be a Document, a Script or an array containing Documents and/or Scripts");
             }
         }
@@ -285,7 +284,8 @@ class Bulk
      * @var string $name name of the parameter
      * @var string $value value of the parameter
      */
-    public function setRequestParam($name, $value) {
+    public function setRequestParam($name, $value)
+    {
         $this->_requestParams[ $name ] = $value;
     }
 
@@ -294,8 +294,9 @@ class Bulk
      * Requires Elasticsearch version >= 0.90.8.
      * @var string $time timeout in Elasticsearch time format
      */
-    public function setShardTimeout($time) {
-        $this->setRequestParam( 'timeout', $time );
+    public function setShardTimeout($time)
+    {
+        $this->setRequestParam('timeout', $time);
     }
 
     /**
@@ -361,7 +362,6 @@ class Bulk
 
         if (isset($responseData['items']) && is_array($responseData['items'])) {
             foreach ($responseData['items'] as $key => $item) {
-
                 if (!isset($actions[$key])) {
                     throw new InvalidException('No response found for action #' . $key);
                 }

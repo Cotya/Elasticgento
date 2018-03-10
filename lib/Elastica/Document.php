@@ -720,7 +720,7 @@ class Document extends Param
      */
     public function setScript($data)
     {
-       throw new NotImplementedException("setScript() is no longer avaliable as of 0.90.2. See http://elastica.io/migration/0.90.2/upsert.html to migrate");
+        throw new NotImplementedException("setScript() is no longer avaliable as of 0.90.2. See http://elastica.io/migration/0.90.2/upsert.html to migrate");
     }
 
     /**

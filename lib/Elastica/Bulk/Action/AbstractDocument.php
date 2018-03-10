@@ -62,14 +62,10 @@ abstract class AbstractDocument extends Action
     public function setData($data)
     {
         if ($data instanceof Script) {
-
             $this->setScript($data);
-
-        }else if ($data instanceof Document) {
-
+        } elseif ($data instanceof Document) {
             $this->setDocument($data);
-
-        }else{
+        } else {
             throw new \InvalidArgumentException("Data should be a Document or a Script.");
         }
 
@@ -131,11 +127,11 @@ abstract class AbstractDocument extends Action
      */
     public static function create($data, $opType = null)
     {
-    	//Check type
-    	if (!($data instanceof Document) && !($data instanceof Script)) {
-    		throw new \InvalidArgumentException("The data needs to be a Document or a Script.");
-    	}
-    	
+        //Check type
+        if (!($data instanceof Document) && !($data instanceof Script)) {
+            throw new \InvalidArgumentException("The data needs to be a Document or a Script.");
+        }
+        
         if (null === $opType && $data->hasOpType()) {
             $opType = $data->getOpType();
         }

@@ -87,4 +87,4 @@ class GeoDistance extends AbstractAggregation
     {
         return $this->setParam("distance_type", $distanceType);
     }
-} 
+}

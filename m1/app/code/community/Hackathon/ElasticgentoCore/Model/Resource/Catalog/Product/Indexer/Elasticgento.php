@@ -202,12 +202,15 @@ class Hackathon_ElasticgentoCore_Model_Resource_Catalog_Product_Indexer_Elasticg
         $adapter = $this->_getReadAdapter();
         $websiteId = (int)Mage::app()->getStore($storeId)->getWebsite()->getId();
         $select = $adapter->select()
-            ->from(array('e' => $this->getTable('catalog/product')),
-                array('offsetStart' => new Zend_Db_Expr('min(e.entity_id)'), 'offsetEnd' => new Zend_Db_Expr('max(e.entity_id)')))
+            ->from(
+                array('e' => $this->getTable('catalog/product')),
+                array('offsetStart' => new Zend_Db_Expr('min(e.entity_id)'), 'offsetEnd' => new Zend_Db_Expr('max(e.entity_id)'))
+            )
             ->join(
                 array('wp' => $this->getTable('catalog/product_website')),
                 'e.entity_id = wp.product_id AND wp.website_id = :website_id',
-                array())
+                array()
+            )
             ->limit(1);
         $range = $adapter->query($select, array('website_id' => $websiteId))->fetch();
         $offsetStart = (int)$range['offsetStart'];
@@ -250,18 +253,21 @@ class Hackathon_ElasticgentoCore_Model_Resource_Catalog_Product_Indexer_Elasticg
             ->join(
                 array('wp' => $this->getTable('catalog/product_website')),
                 'e.entity_id = wp.product_id AND wp.website_id = :website_id',
-                array())
+                array()
+            )
             ->joinLeft(
                 array('t1' => $status->getBackend()->getTable()),
                 'e.entity_id = t1.entity_id',
-                array())
+                array()
+            )
             ->joinLeft(
                 array('t2' => $status->getBackend()->getTable()),
                 't2.entity_id = t1.entity_id'
                 . ' AND t1.entity_type_id = t2.entity_type_id'
                 . ' AND t1.attribute_id = t2.attribute_id'
                 . ' AND t2.store_id = :store_id',
-                array())
+                array()
+            )
             ->where('t1.entity_type_id = :entity_type_id')
             ->where('t1.attribute_id = :status_attribute_id')
             ->where('t1.store_id = ?', Mage_Core_Model_App::ADMIN_STORE_ID);
@@ -415,14 +421,16 @@ class Hackathon_ElasticgentoCore_Model_Resource_Catalog_Product_Indexer_Elasticg
         $tagTable           = $this->getTable('tag/tag');
         $tagRelationTable   = $this->getTable('tag/relation');
         $select = $adapter->select()
-            ->from($tagRelationTable,
+            ->from(
+                $tagRelationTable,
                 array(
                     'tag_id',
                     'product_id'   => 'product_id',
                     'store_id'   => 'store_id'
                 )
             )
-            ->join(array('tag' => $tagTable),
+            ->join(
+                array('tag' => $tagTable),
                 'tag_relation.tag_id = tag.tag_id',
                 array(
                     'name' => new \Zend_Db_Expr('group_concat(`tag`.name SEPARATOR " , ")'),
@@ -431,7 +439,7 @@ class Hackathon_ElasticgentoCore_Model_Resource_Catalog_Product_Indexer_Elasticg
             ->group(['product_id'])
         ;
         
-        foreach($adapter->fetchAll($select) as $tag){
+        foreach ($adapter->fetchAll($select) as $tag) {
             $documents[$tag['product_id']]->set('tags', $tag['name']);
         }
         
@@ -452,7 +460,8 @@ class Hackathon_ElasticgentoCore_Model_Resource_Catalog_Product_Indexer_Elasticg
         //we need the website id
         $websiteId = (int)Mage::app()->getStore($storeId)->getWebsite()->getId();
         $select = $adapter->select()
-            ->from($this->getTable('catalog/product_index_price'),
+            ->from(
+                $this->getTable('catalog/product_index_price'),
                 array(
                     'entity_id',
                     'customer_group_id',
@@ -500,7 +509,8 @@ class Hackathon_ElasticgentoCore_Model_Resource_Catalog_Product_Indexer_Elasticg
     {
         $adapter = $this->_getReadAdapter();
         $select = $adapter->select()
-            ->from($this->getTable('catalog/product_super_link'),
+            ->from(
+                $this->getTable('catalog/product_super_link'),
                 array('entity_id' => 'parent_id',
                     'product_ids' => new Zend_Db_Expr('group_concat(DISTINCT product_id SEPARATOR \',\')'))
             )
@@ -527,7 +537,8 @@ class Hackathon_ElasticgentoCore_Model_Resource_Catalog_Product_Indexer_Elasticg
     {
         $adapter = $this->_getReadAdapter();
         $select = $adapter->select()
-            ->from($this->getTable('catalog/product_link'),
+            ->from(
+                $this->getTable('catalog/product_link'),
                 array('entity_id' => 'product_id',
                     'link_type_id',
                     'product_ids' => new Zend_Db_Expr('group_concat(DISTINCT linked_product_id SEPARATOR \';\')'))

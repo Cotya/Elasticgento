@@ -52,4 +52,4 @@ class Histogram extends AbstractSimpleAggregation
     {
         return $this->setParam("min_doc_count", $count);
     }
-} 
+}

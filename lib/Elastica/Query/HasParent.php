@@ -1,6 +1,7 @@
 <?php
 
 namespace Elastica\Query;
+
 use Elastica\Query as BaseQuery;
 
 /**
@@ -15,7 +16,7 @@ class HasParent extends AbstractQuery
     /**
      * Construct HasChild Query
      *
-     * @param string|\Elastica\Query|\Elastica\Query\AbstractQuery $query 
+     * @param string|\Elastica\Query|\Elastica\Query\AbstractQuery $query
      * @param string                $type  Parent document type
      */
     public function __construct($query, $type)

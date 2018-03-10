@@ -24,7 +24,7 @@ class Null extends AbstractTransport
     {
         $response = array(
                 "took" => 0,
-                "timed_out" => FALSE,
+                "timed_out" => false,
                 "_shards" => array(
                         "total" => 0,
                         "successful" => 0,
@@ -32,12 +32,12 @@ class Null extends AbstractTransport
                         ),
                 "hits" => array(
                         "total" => 0,
-                        "max_score" => NULL,
+                        "max_score" => null,
                         "hits" => array()
                         ),
                 "params" => $params
                 );
 
-         return new Response(json_encode($response));
+        return new Response(json_encode($response));
     }
 }
